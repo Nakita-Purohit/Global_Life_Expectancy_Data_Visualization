@@ -1,0 +1,8 @@
+Variable,Years Available,Missing (%),Countries (any data),Countries (80%+ coverage),Countries (complete)
+life_expectancy,2000–2023,0.43,232,232,232
+edu_expenditure_pct_gdp,2000–2023,35.12,215,110,20
+health_exp_pct_gdp,2000–2023,12.37,208,202,198
+pm25,2001–2020,23.1,215,215,215
+gdp_per_capita,2000–2022,32.55,164,164,164
+le_women,2000–2023,7.73,215,215,215
+le_men,2000–2023,7.73,215,215,215
