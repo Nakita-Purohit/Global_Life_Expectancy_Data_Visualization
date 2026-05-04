@@ -1,30 +1,46 @@
-# Determinants of Global Life Expectancy (2000–2023)
+# Determinants of Global Life Expectancy (2000–2023) — Country–Year Panel Study
 
-A reproducible panel data analysis examining which socioeconomic, 
-health system, and environmental factors are most strongly associated 
-with life expectancy across 233 countries from 2000 to 2023.
+This project analyzes how key socioeconomic, health-system, and environmental factors are associated with **life expectancy at birth** across countries over time.  
+It builds a reproducible **country–year panel dataset** and uses **visual analysis + regression models + robustness checks**.
 
-## Data Sources
-World Bank World Development Indicators(https://data.worldbank.org)
-Our World in Data (https://ourworldindata.org)
+## What’s inside
+- **Dataset construction:** merges World Bank (WDI-style) + OWID (Grapher) CSVs into one `master_panel.csv`
+- **Figures (1–6):** global trend, selected region trends, Preston curve, correlation heatmap, women vs men, pre/post-2020 distributions
+- **Models (OLS):**
+  - Model 1: `life_expectancy ~ log_gdp + Year`
+  - Model 2: `+ edu_expenditure_pct_gdp + health_exp_pct_gdp`
+  - Model 3: `+ pm25` (restricted to **2001–2020** due to PM2.5 availability)
+- **Robustness checks:** pre-2020 re-estimation, GDP trimming (1% tails), VIF
 
-## Variables
-1)Life expectancy at birth (outcome)
-2)GDP per capita (log-transformed)
-3)Government education expenditure (% GDP)
-4)Health expenditure (% GDP)
-5)PM2.5 air pollution exposure
+> Note: Results are interpreted as **associations**, not causal effects.
 
-## Project Structure
-"data_cleaning_merge.py" - data cleaning and merging pipeline
-"master_panel.csv" - cleaned panel dataset (5,592 observations)
+## Data files required (place in project root)
+World Bank / WDI-style:
+- `LE_at_birth.csv`
+- `education.csv`
+- `Health_new.csv`
+- `pm2_5.csv`
 
-## Coming Soon
-Visualizations (matplotlib, seaborn)
-Regression models (OLS, fixed effects)
-Results and figures
+OWID:
+- `life-expectancy-vs-gdp-per-capita.csv`
+- `life-expectancy-of-women-vs-life-expectancy-of-men.csv`
 
-## Tools Used
-Python
-pandas
-numpy
+## How to run (from scratch)
+### 1) Install dependencies
+```bash
+pip install pandas numpy matplotlib statsmodels
+
+**##Run scripts in order**
+python data_clean_merge.py
+python verify_stats.py
+python visualizations.py
+python regression_models.py
+python robustness_checks.py
+
+Output files generated
+master_panel.csv (merged dataset)
+fig1_*.png to fig6_*.png (figures)
+regression_summary.csv (model fit summary)
+robustness_results.csv (robustness summary)
+vif_model3.csv (VIF table)
+
