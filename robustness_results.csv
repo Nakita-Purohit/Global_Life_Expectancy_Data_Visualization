@@ -1,0 +1,4 @@
+Check,N_obs,Countries,R2,Adj_R2,log_gdp_coef,log_gdp_p,health_exp_coef,health_exp_p,edu_exp_coef,edu_exp_p
+Pre2020_Model1,3280,164,0.704,0.704,6.248,0.0,,,,
+Pre2020_Model2,2280,154,0.75,0.75,6.192,0.0,0.47,0.0,-0.187,0.0493
+TrimmedGDP_Model1_1pct,3696,164,0.696,0.696,6.202,0.0,,,,
